@@ -1,2 +1,20 @@
 @charset "UTF-8";
 
+.header {
+    padding: rem-calc(20) 0;
+}
+
+.header--logo {
+    font-size: rem-calc(22);
+    line-height: rem-calc(22);
+    padding-bottom: rem-calc(5);
+}
+
+.header--logo--text {
+    text-decoration: none;
+}
+
+.header--slogan {
+    font-size: rem-calc(12);
+    color: #777;
+}

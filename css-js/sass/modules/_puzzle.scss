@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+$puzzle-color: #777;
+
+$puzzle-bg: rgba($puzzle-color, 0.1);
+$puzzle-item-bg: rgba($puzzle-color, 0.2);
+$puzzle-is-4-bg: rgba($puzzle-color, 0.3);
+$puzzle-is-8-bg: rgba($puzzle-color, 0.4);
+$puzzle-is-16-bg: rgba($puzzle-color, 0.5);
+$puzzle-is-32-bg: rgba($puzzle-color, 0.6);
+$puzzle-is-64-bg: rgba($puzzle-color, 0.7);
+$puzzle-is-128-bg: rgba($puzzle-color, 0.8);
+$puzzle-is-256-bg: rgba($puzzle-color, 0.9);
+$puzzle-is-512-bg: rgba($puzzle-color, 1);
+$puzzle-is-1024-bg: rgba($color-primary, 0.5);
+$puzzle-is-2048-bg: rgba($color-primary, 1);
+
+$puzzle-radius: rem-calc(4);
+$puzzle-padding: rem-calc(10);
+
+$puzzle-container-size: rem-calc(400);
+
+$puzzle-tile-margin: 10;
+$puzzle-tile-size: rem-calc(((400 - 10) / 4) - $puzzle-tile-margin);
+
+.puzzle {
+
+}
+
+.puzzle--game-wrapper {
+    width: $puzzle-container-size;
+    height: $puzzle-container-size;
+    margin: 0 auto;
+    border-radius: $puzzle-radius;
+    background: $puzzle-bg;
+}
+
+.puzzle--game {
+    @include clearfix();
+    padding: $puzzle-padding;
+    margin-left: - rem-calc($puzzle-tile-margin);
+}
+
+.puzzle--game--node {
+    width: $puzzle-tile-size;
+    height: $puzzle-tile-size;
+    float: left;
+    margin: 0 0 rem-calc($puzzle-tile-margin) rem-calc($puzzle-tile-margin);
+
+    &:nth-child(4n) {
+        margin-right: 0;
+    }
+}
+
+.puzzle--game--node--item {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: rem-calc(32);
+    line-height: rem-calc(32);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $puzzle-item-bg;
+    border-radius: $puzzle-radius;
+
+    &.is-4 {
+        background: $puzzle-is-4-bg;
+    }
+
+    &.is-8 {
+        background: $puzzle-is-8-bg;
+    }
+
+    &.is-16 {
+        background: $puzzle-is-16-bg;
+    }
+
+    &.is-32 {
+        background: $puzzle-is-32-bg;
+    }
+
+    &.is-64 {
+        background: $puzzle-is-64-bg;
+    }
+
+    &.is-128 {
+        background: $puzzle-is-128-bg;
+    }
+
+    &.is-256 {
+        background: $puzzle-is-256-bg;
+        color: $base-white;
+    }
+
+    &.is-512 {
+        background: $puzzle-is-512-bg;
+        color: $base-white;
+    }
+
+    &.is-1024 {
+        background: $puzzle-is-1024-bg;
+        color: $base-white;
+    }
+
+    &.is-2048 {
+        background: $puzzle-is-2048-bg;
+        color: $base-white;
+    }
+}
