@@ -1,3 +1,5 @@
+'use strict';
+
 jQuery(document).ready(function($) {
-    console.log('jquery loaded!');
+    $('html').addClass('js');
 });
