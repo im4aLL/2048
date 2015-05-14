@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+
+@import "../vendors/foundation/scss/foundation/functions";
+@import "settings"; // custom settings
+@import "../vendors/foundation/scss/foundation/components/grid";
+
+
+@import "mixin";
+
+/* global base styles e.g body, a */
+@import "base";
+
+/* layout styles e.g. header, article, footer */
+@import "layout";
+
+/* helper classes like is-hidden, is-active */
+@import "state";
+
+/* modules */
+@import "modules/header";
+@import "modules/button";
+@import "modules/footer";
+
+/* theme e.g. theme-dark */
+@import "theme";

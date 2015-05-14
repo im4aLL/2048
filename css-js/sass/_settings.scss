@@ -1,0 +1,18 @@
+/* foundation settings
+========================================================== */
+$row-width          : rem-calc(1200);
+$column-gutter      : rem-calc(20);
+$column-half-gutter : $column-gutter / 2;
+$total-columns      : 12;
+
+$small-range        : (0em, 40em);
+$medium-range       : (40.063em, 80em);
+$large-range        : (80.063em, 120em);
+$xlarge-range       : (120.063em, 160em);
+$xxlarge-range      : (160.063em);
+
+
+/* Basic settings
+========================================================== */
+$transation-duration : 400ms;
+$transition-method   : ease-in-out;

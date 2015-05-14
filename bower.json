@@ -1,0 +1,17 @@
+{
+  "name": "2048 game",
+  "version": "0.0.1",
+  "homepage": "https://github.com/im4aLL/2048",
+  "authors": [
+    "Habib Hadi"
+  ],
+  "description": "puzzle game exercise",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "1.11.3",
+    "foundation": "~5.5.2"
+  }
+}
