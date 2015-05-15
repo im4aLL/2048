@@ -19,9 +19,8 @@ $puzzle-radius: rem-calc(4);
 $puzzle-padding: rem-calc(10);
 
 $puzzle-container-size: rem-calc(400);
-
 $puzzle-tile-margin: 10;
-$puzzle-tile-size: rem-calc(((400 - 10) / 4) - $puzzle-tile-margin);
+$puzzle-tile-size: rem-calc(((400 - 10 / 4) - $puzzle-tile-margin);
 
 .puzzle {
 

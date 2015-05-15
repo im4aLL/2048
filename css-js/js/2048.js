@@ -128,9 +128,3 @@ jQuery(document).ready(function() {
     var game = new Game();
     game.start();
 });
-
-'use strict';
-
-jQuery(document).ready(function($) {
-    $('html').addClass('js');
-});

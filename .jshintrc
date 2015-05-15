@@ -21,6 +21,8 @@
   "globals": {
     "jQuery": true,
     "document": true,
-    "window": true
+    "window": true,
+    "_": true,
+    "$": true
   }
 }
