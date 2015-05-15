@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.score {
+    float: right;
+    text-align: center;
+}
+
+.score--total,
+.score--max {
+    font-size: rem-calc(26);
+    width: rem-calc(75);
+    float: left;
+    color: #777;
+    margin-top: rem-calc(20);
+}
+
+.score--head {
+    font-size: rem-calc(14);
+    display: block;
+    color: #ccc;
+    padding-bottom: rem-calc(5);
+}

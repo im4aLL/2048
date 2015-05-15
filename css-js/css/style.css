@@ -1765,16 +1765,21 @@ p {
 }
 
 /* line 29, ../sass/_base.scss */
+b {
+  font-weight: 600;
+}
+
+/* line 33, ../sass/_base.scss */
 h1, h2, h3, h4, h5, h6 {
   padding: 1.25rem 0;
 }
 
-/* line 33, ../sass/_base.scss */
+/* line 37, ../sass/_base.scss */
 h1 {
   font-size: 2.375rem;
 }
 
-/* line 37, ../sass/_base.scss */
+/* line 41, ../sass/_base.scss */
 small {
   font-size: 75%;
 }
@@ -1829,6 +1834,7 @@ small {
 .puzzle--game {
   padding: 0.625rem;
   margin-left: -0.625rem;
+  position: relative;
 }
 /* line 3, ../sass/_mixin.scss */
 .puzzle--game:before, .puzzle--game:after {
@@ -1840,22 +1846,33 @@ small {
   clear: both;
 }
 
-/* line 44, ../sass/modules/_puzzle.scss */
+/* line 45, ../sass/modules/_puzzle.scss */
 .puzzle--game--node {
   width: 5.46875rem;
   height: 5.46875rem;
   float: left;
   margin: 0 0 0.625rem 0.625rem;
+  background: rgba(119, 119, 119, 0.2);
+  border-radius: 0.25rem;
 }
-/* line 50, ../sass/modules/_puzzle.scss */
+/* line 53, ../sass/modules/_puzzle.scss */
 .puzzle--game--node:nth-child(4n) {
   margin-right: 0;
 }
 
-/* line 55, ../sass/modules/_puzzle.scss */
+/* line 58, ../sass/modules/_puzzle.scss */
+.puzzle--game--tiles {
+  position: absolute;
+  left: 1.25rem;
+  top: 0.625rem;
+  width: 23.75rem;
+  height: 23.75rem;
+}
+
+/* line 66, ../sass/modules/_puzzle.scss */
 .puzzle--game--node--item {
-  width: 100%;
-  height: 100%;
+  width: 5.46875rem;
+  height: 5.46875rem;
   text-align: center;
   font-size: 2rem;
   line-height: 2rem;
@@ -1871,49 +1888,80 @@ small {
   background: rgba(119, 119, 119, 0.2);
   border-radius: 0.25rem;
 }
-/* line 67, ../sass/modules/_puzzle.scss */
+/* line 78, ../sass/modules/_puzzle.scss */
 .puzzle--game--node--item.is-4 {
   background: rgba(119, 119, 119, 0.3);
 }
-/* line 71, ../sass/modules/_puzzle.scss */
+/* line 82, ../sass/modules/_puzzle.scss */
 .puzzle--game--node--item.is-8 {
   background: rgba(119, 119, 119, 0.4);
 }
-/* line 75, ../sass/modules/_puzzle.scss */
+/* line 86, ../sass/modules/_puzzle.scss */
 .puzzle--game--node--item.is-16 {
   background: rgba(119, 119, 119, 0.5);
 }
-/* line 79, ../sass/modules/_puzzle.scss */
+/* line 90, ../sass/modules/_puzzle.scss */
 .puzzle--game--node--item.is-32 {
   background: rgba(119, 119, 119, 0.6);
 }
-/* line 83, ../sass/modules/_puzzle.scss */
+/* line 94, ../sass/modules/_puzzle.scss */
 .puzzle--game--node--item.is-64 {
   background: rgba(119, 119, 119, 0.7);
 }
-/* line 87, ../sass/modules/_puzzle.scss */
+/* line 98, ../sass/modules/_puzzle.scss */
 .puzzle--game--node--item.is-128 {
   background: rgba(119, 119, 119, 0.8);
 }
-/* line 91, ../sass/modules/_puzzle.scss */
+/* line 102, ../sass/modules/_puzzle.scss */
 .puzzle--game--node--item.is-256 {
   background: rgba(119, 119, 119, 0.9);
   color: #ffffff;
 }
-/* line 96, ../sass/modules/_puzzle.scss */
+/* line 107, ../sass/modules/_puzzle.scss */
 .puzzle--game--node--item.is-512 {
   background: #777777;
   color: #ffffff;
 }
-/* line 101, ../sass/modules/_puzzle.scss */
+/* line 112, ../sass/modules/_puzzle.scss */
 .puzzle--game--node--item.is-1024 {
   background: rgba(216, 30, 4, 0.5);
   color: #ffffff;
 }
-/* line 106, ../sass/modules/_puzzle.scss */
+/* line 117, ../sass/modules/_puzzle.scss */
 .puzzle--game--node--item.is-2048 {
   background: #d81e04;
   color: #ffffff;
+}
+
+/* line 123, ../sass/modules/_puzzle.scss */
+.puzzle--game--instruction {
+  padding-top: 2.5rem;
+  text-align: center;
+  color: #777;
+}
+
+/* line 3, ../sass/modules/_score.scss */
+.score {
+  float: right;
+  text-align: center;
+}
+
+/* line 8, ../sass/modules/_score.scss */
+.score--total,
+.score--max {
+  font-size: 1.625rem;
+  width: 4.6875rem;
+  float: left;
+  color: #777;
+  margin-top: 1.25rem;
+}
+
+/* line 17, ../sass/modules/_score.scss */
+.score--head {
+  font-size: 0.875rem;
+  display: block;
+  color: #ccc;
+  padding-bottom: 0.3125rem;
 }
 
 /* theme e.g. theme-dark */

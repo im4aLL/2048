@@ -12,9 +12,15 @@
     <!-- header starts -->
     <header class="header">
         <div class="row">
-            <div class="columns small-12">
+            <div class="columns small-6">
                 <h1 class="header--logo"><a href="./" class="header--logo--text">2048 game</a></h1>
                 <p class="header--slogan">Play game online!</p>
+            </div>
+            <div class="columns small-6">
+                <div class="score">
+                    <div class="score--total"><em class="score--head">Score</em><span class="score--total--text">512</span></div>
+                    <div class="score--max"><em class="score--head">Best</em><span class="score--max--text">0</span></div>
+                </div>
             </div>
         </div>
     </header>
@@ -28,28 +34,35 @@
                 <div class="puzzle--game-wrapper">
                     <div class="puzzle--game">
 
-                        <div class="puzzle--game--node a1"><div class="puzzle--game--node--item">2</div></div>
-                        <div class="puzzle--game--node a2"><div class="puzzle--game--node--item is-4">4</div></div>
-                        <div class="puzzle--game--node a3"><div class="puzzle--game--node--item is-8">8</div></div>
-                        <div class="puzzle--game--node a4"><div class="puzzle--game--node--item is-16">16</div></div>
+                        <div class="puzzle--game--node"></div>
+                        <div class="puzzle--game--node"></div>
+                        <div class="puzzle--game--node"></div>
+                        <div class="puzzle--game--node"></div>
 
-                        <div class="puzzle--game--node a1"><div class="puzzle--game--node--item is-32">32</div></div>
-                        <div class="puzzle--game--node a2"><div class="puzzle--game--node--item is-64">64</div></div>
-                        <div class="puzzle--game--node a3"><div class="puzzle--game--node--item is-128">128</div></div>
-                        <div class="puzzle--game--node a4"><div class="puzzle--game--node--item is-256">256</div></div>
+                        <div class="puzzle--game--node"></div>
+                        <div class="puzzle--game--node"></div>
+                        <div class="puzzle--game--node"></div>
+                        <div class="puzzle--game--node"></div>
 
-                        <div class="puzzle--game--node a1"><div class="puzzle--game--node--item is-512">512</div></div>
-                        <div class="puzzle--game--node a2"><div class="puzzle--game--node--item is-1024">1024</div></div>
-                        <div class="puzzle--game--node a3"><div class="puzzle--game--node--item is-2048">2048</div></div>
-                        <div class="puzzle--game--node a4"><div class="puzzle--game--node--item"></div></div>
+                        <div class="puzzle--game--node"></div>
+                        <div class="puzzle--game--node"></div>
+                        <div class="puzzle--game--node"></div>
+                        <div class="puzzle--game--node"></div>
 
-                        <div class="puzzle--game--node a1"><div class="puzzle--game--node--item">2</div></div>
-                        <div class="puzzle--game--node a2"><div class="puzzle--game--node--item">4</div></div>
-                        <div class="puzzle--game--node a3"><div class="puzzle--game--node--item">8</div></div>
-                        <div class="puzzle--game--node a4"><div class="puzzle--game--node--item"></div></div>
+                        <div class="puzzle--game--node"></div>
+                        <div class="puzzle--game--node"></div>
+                        <div class="puzzle--game--node"></div>
+                        <div class="puzzle--game--node"></div>
+
+
+                        <div class="puzzle--game--tiles">
+                            <div class="puzzle--game--node--item a1">2</div>
+                        </div>
 
                     </div>
                 </div>
+
+                <p class="puzzle--game--instruction"><b>How to play:</b> Use your arrow keys to move the tiles. When two tiles with the same number touch, they merge into one!</p>
 
             </div>
         </div>
