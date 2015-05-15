@@ -57,13 +57,11 @@ $puzzle-tile-size: rem-calc(((400 - 10) / 4) - $puzzle-tile-margin);
 
 .puzzle--game--tiles {
     position: absolute;
-    left: rem-calc(20);
-    top: rem-calc(10);
     width: $puzzle-container-size - rem-calc(20);
     height: $puzzle-container-size - rem-calc(20);
 }
 
-.puzzle--game--node--item {
+.puzzle--game--tiles--item {
     width: $puzzle-tile-size;
     height: $puzzle-tile-size;
     text-align: center;
@@ -74,6 +72,14 @@ $puzzle-tile-size: rem-calc(((400 - 10) / 4) - $puzzle-tile-margin);
     justify-content: center;
     background: $puzzle-item-bg;
     border-radius: $puzzle-radius;
+    position: absolute;
+    left: rem-calc(10);
+    top: 0;
+    margin-left: $puzzle-padding;
+    margin-top: $puzzle-padding;
+    transition-property: transform, margin;
+    transition-duration: $transition-duration;
+    transition-timing-function: $transition-method;
 
     &.is-4 {
         background: $puzzle-is-4-bg;
@@ -117,6 +123,99 @@ $puzzle-tile-size: rem-calc(((400 - 10) / 4) - $puzzle-tile-margin);
     &.is-2048 {
         background: $puzzle-is-2048-bg;
         color: $base-white;
+    }
+
+
+    // row 1
+    &.a1 {
+        transform: translate(0, 0);
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    &.b1 {
+        margin-top: 0;
+        transform: translate(100%, 0);
+    }
+
+    &.c1 {
+        margin-top: 0;
+        margin-left: $puzzle-padding * 2;
+        transform: translate(200%, 0);
+    }
+
+    &.d1 {
+        margin-top: 0;
+        margin-left: $puzzle-padding * 3;
+        transform: translate(300%, 0);
+    }
+
+    // row 2
+    &.a2 {
+        transform: translate(0, 100%);
+        margin-left: 0;
+    }
+
+    &.b2 {
+        transform: translate(100%, 100%);
+    }
+
+    &.c2 {
+        margin-left: $puzzle-padding * 2;
+        transform: translate(200%, 100%);
+    }
+
+    &.d2 {
+        margin-left: $puzzle-padding * 3;
+        transform: translate(300%, 100%);
+    }
+
+    // row 3
+    &.a3 {
+        margin-top: $puzzle-padding * 2;
+        transform: translate(0, 200%);
+        margin-left: 0;
+    }
+
+    &.b3 {
+        margin-top: $puzzle-padding * 2;
+        transform: translate(100%, 200%);
+    }
+
+    &.c3 {
+        margin-top: $puzzle-padding * 2;
+        margin-left: $puzzle-padding * 2;
+        transform: translate(200%, 200%);
+    }
+
+    &.d3 {
+        margin-top: $puzzle-padding * 2;
+        margin-left: $puzzle-padding * 3;
+        transform: translate(300%, 200%);
+    }
+
+    // row 4
+    &.a4 {
+        margin-top: $puzzle-padding * 3;
+        transform: translate(0, 300%);
+        margin-left: 0;
+    }
+
+    &.b4 {
+        margin-top: $puzzle-padding * 3;
+        transform: translate(100%, 300%);
+    }
+
+    &.c4 {
+        margin-top: $puzzle-padding * 3;
+        margin-left: $puzzle-padding * 2;
+        transform: translate(200%, 300%);
+    }
+
+    &.d4 {
+        margin-top: $puzzle-padding * 3;
+        margin-left: $puzzle-padding * 3;
+        transform: translate(300%, 300%);
     }
 }
 
