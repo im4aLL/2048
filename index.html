@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>2048 game for Mindvalley</title>
+    <title>2048 game</title>
 
     <link rel="stylesheet" href="css-js/style.min.css">
 </head>
@@ -17,8 +17,7 @@
             </div>
             <div class="columns small-6">
                 <div class="score">
-                    <div class="score--total"><em class="score--head">Score</em><span class="score--total--text">512</span></div>
-                    <div class="score--max"><em class="score--head">Best</em><span class="score--max--text">0</span></div>
+                    <div class="score--total"><em class="score--head">Score</em><span class="score--total--text">0</span></div>
                 </div>
             </div>
         </div>
@@ -31,6 +30,10 @@
             <div class="columns small-12">
 
                 <div class="puzzle--game-wrapper">
+                    <div class="puzzle--game--note is-hidden">
+                        Game over! <br> <small>Reload the browser to play again!</small>
+                    </div>
+
                     <div class="puzzle--game">
                         <div class="puzzle--game--tiles"></div>
                     </div>
@@ -46,14 +49,14 @@
     <!-- footer starts -->
     <footer class="footer">
         <div class="row">
-            <p class="footer--claim columns small-12"><small>&copy; 2048 game demo</small></p>
+            <p class="footer--claim columns small-12"><small>&copy; 2048 game demo, please report the game bug at <a href="mailto:me@habibhadi.com">me@habibhadi.com</a></small></p>
         </div>
     </footer>
     <!-- footer ends -->
 
     <script src="css-js/vendors/jquery/dist/jquery.min.js"></script>
     <script src="css-js/vendors/underscore/underscore-min.js"></script>
-    <script src="css-js/main.min.js"></script>
+    <script src="css-js/main.js"></script>
 
 </body>
 </html>

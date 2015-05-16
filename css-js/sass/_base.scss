@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
 @import "reset";
-@import url(http://fonts.googleapis.com/css?family=Roboto);
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
 
 // font
-$base-font-family: 'Roboto', sans-serif !default;
+$base-font-family: 'Montserrat', sans-serif !default;
 
 // colors
 $base-primary             : #363636 !default;
@@ -19,6 +19,7 @@ body {
 
 a {
     color: $color-primary;
+    text-decoration: none;
 }
 
 p {

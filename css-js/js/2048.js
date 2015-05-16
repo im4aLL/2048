@@ -23,6 +23,11 @@ var Game = function(){
     };
 
     this.gridZoneKeys = _.keys(this.gridZone);
+    this.moved = false;
+    this.score = 0;
+
+    this.winValue = 2048;
+    this.changing = false;
 };
 
 Game.prototype.generateGrid = function(){
@@ -37,9 +42,35 @@ Game.prototype.generateGrid = function(){
 };
 
 Game.prototype.start = function(){
+    this.resetKeyValues();
     this.generateGrid();
     this.generateNblock();
     this.watchKeyboard();
+};
+
+Game.prototype.resetKeyValues = function(){
+    this.blockKey = {
+        left: false,
+        right: false,
+        top: false,
+        bottom: false
+    };
+};
+
+Game.prototype.checkGameOver = function(){
+    if(this.blockKey.left === true && this.blockKey.right === true && this.blockKey.top === true && this.blockKey.bottom === true) {
+        $('.puzzle--game--note').removeClass('is-hidden');
+    }
+};
+
+Game.prototype.checkWin = function(){
+    var self = this;
+
+    _.each(self.gridZone, function(value, key){
+        if(self.gridZone[key].digit === self.winValue) {
+            $('.puzzle--game--note').removeClass('is-hidden').html('Congratulation! You won :) <br> <small>Reload the browser to play again!</small>');
+        }
+    });
 };
 
 Game.prototype.generateNblock = function(n){
@@ -51,7 +82,7 @@ Game.prototype.generateNblock = function(n){
     for(var i = 0; i < n; i++) {
         var value = 2;
 
-        html += '<div class="puzzle--game--tiles--item '+nBlocks[i]+'">'+ value +'</div>';
+        html += '<div class="puzzle--game--tiles--item '+nBlocks[i]+' is-'+value+'">'+ value +'</div>';
         self.gridZone[nBlocks[i]].digit = value;
     }
 
@@ -101,6 +132,21 @@ Game.prototype.keysHasValue = function(){
     return filteredKey;
 };
 
+Game.prototype.keysHasNotValue = function(){
+    var keys = _.mapObject(this.gridZone, function(val) {
+        return val.digit > 0;
+    });
+
+    var filteredKey = [];
+    _.mapObject(keys, function(val, key) {
+        if(val === false) {
+            filteredKey.push(key);
+        }
+    });
+
+    return filteredKey;
+};
+
 Game.prototype.getGridKeysByColumn = function(){
     var splittedArray = _.groupBy(this.gridZoneKeys, function(val, index){
         return Math.floor(index / 4);
@@ -122,7 +168,14 @@ Game.prototype.getGridKeysByRow = function(){
 
 Game.prototype.keyHandler = function(direction){
     var self = this;
+
+    if(self.changing === true) {
+        return;
+    }
+
+    self.changing = true;
     var gridBlocks = this.keysHasValue();
+    var generateNewBlock = false;
 
     var grid;
     if(direction === 'top' || direction === 'bottom') {
@@ -143,7 +196,6 @@ Game.prototype.keyHandler = function(direction){
     }
 
     _.each(gridBlocks, function(block){
-        // console.log('Old-block - ' + block);
 
         var newBlock = block;
         var newBlockVal = self.gridZone[block].digit;
@@ -154,18 +206,26 @@ Game.prototype.keyHandler = function(direction){
 
             var indexOfBlock = _.indexOf(rowArray, block);
             if(indexOfBlock !== -1) {
-                // console.log(rowArray);
 
                 for(var i = indexOfBlock; i < 4; i++) {
                     if(i > indexOfBlock) {
 
                         if(self.gridZone[rowArray[i]].digit === 0) {
                             newBlock = rowArray[i];
+                            generateNewBlock = true;
+                        }
+                        else if( self.gridZone[rowArray[i]].digit !== self.gridZone[block].digit ){
+                            return;
                         }
                         else if( self.gridZone[rowArray[i]].digit === self.gridZone[block].digit && self.gridZone[rowArray[i]].isAbleMarge === true ) {
                             newBlock = rowArray[i];
                             newBlockVal += newBlockVal;
                             isMarge = true;
+                            generateNewBlock = true;
+
+                            if(newBlockVal > 0) {
+                                self.updateScore(newBlockVal);
+                            }
                         }
                     }
                 }
@@ -179,8 +239,6 @@ Game.prototype.keyHandler = function(direction){
 
         });
 
-        // console.log('new-block - ' + newBlock);
-
         self.change({
             old: { tile: block, val: 0 },
             new: { tile: newBlock, val: newBlockVal }
@@ -188,7 +246,19 @@ Game.prototype.keyHandler = function(direction){
 
     });
 
+
     self.resetMergeValue();
+
+    if(self.moved === true) {
+        self.generateNewTile();
+    }
+    else {
+        self.blockKey[direction] = true;
+    }
+
+    self.checkGameOver();
+    self.checkWin();
+    self.changing = false;
 };
 
 Game.prototype.resetMergeValue = function(){
@@ -212,11 +282,33 @@ Game.prototype.change = function(obj){
     }
 
     // updating class & value
-    $('.puzzle--game--tiles--item.'+obj.old.tile).removeClass(obj.old.tile).addClass(obj.new.tile).html(obj.new.val);
+    $('.puzzle--game--tiles--item.'+obj.old.tile).removeClass(obj.old.tile).addClass(obj.new.tile).addClass('is-'+obj.new.val).html(obj.new.val);
 
     // change value
     self.gridZone[obj.old.tile].digit = obj.old.val;
     self.gridZone[obj.new.tile].digit = obj.new.val;
+
+    self.moved = true;
+};
+
+Game.prototype.generateNewTile = function(){
+    var self = this;
+    var newTile = _.sample(self.keysHasNotValue());
+
+    var value = 2;
+    setTimeout(function(){
+        $('.puzzle--game--tiles').append('<div class="puzzle--game--tiles--item '+newTile+' is-'+value+'">'+ value +'</div>');
+    }, 250);
+    self.gridZone[newTile].digit = value;
+    self.moved = false;
+    self.resetKeyValues();
+};
+
+Game.prototype.updateScore = function(value){
+    var self = this;
+
+    self.score += value;
+    $('.score--total--text').html(self.score);
 };
 
 

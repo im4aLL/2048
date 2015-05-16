@@ -2,7 +2,7 @@
 ========================================================== */
 /* Basic settings
 ========================================================== */
-@import url(http://fonts.googleapis.com/css?family=Roboto);
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
 /* line 364, ../vendors/foundation/scss/foundation/components/_global.scss */
 meta.foundation-version {
   font-family: "/5.5.2/";
@@ -1749,37 +1749,38 @@ table {
 
 /* line 15, ../sass/_base.scss */
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #363636;
 }
 
 /* line 20, ../sass/_base.scss */
 a {
   color: #d81e04;
+  text-decoration: none;
 }
 
-/* line 24, ../sass/_base.scss */
+/* line 25, ../sass/_base.scss */
 p {
   font-size: 0.875rem;
   line-height: 1.5rem;
 }
 
-/* line 29, ../sass/_base.scss */
+/* line 30, ../sass/_base.scss */
 b {
   font-weight: 600;
 }
 
-/* line 33, ../sass/_base.scss */
+/* line 34, ../sass/_base.scss */
 h1, h2, h3, h4, h5, h6 {
   padding: 1.25rem 0;
 }
 
-/* line 37, ../sass/_base.scss */
+/* line 38, ../sass/_base.scss */
 h1 {
   font-size: 2.375rem;
 }
 
-/* line 41, ../sass/_base.scss */
+/* line 42, ../sass/_base.scss */
 small {
   font-size: 75%;
 }
@@ -1821,16 +1822,16 @@ small {
   color: #a2a2a2;
 }
 
-/* line 29, ../sass/modules/_puzzle.scss */
+/* line 30, ../sass/modules/_puzzle.scss */
 .puzzle--game-wrapper {
   width: 25rem;
   height: 25rem;
   margin: 0 auto;
   border-radius: 0.25rem;
-  background: rgba(119, 119, 119, 0.1);
+  background: #F4F4F4;
 }
 
-/* line 37, ../sass/modules/_puzzle.scss */
+/* line 38, ../sass/modules/_puzzle.scss */
 .puzzle--game {
   padding: 0.625rem;
   margin-left: -0.625rem;
@@ -1846,35 +1847,35 @@ small {
   clear: both;
 }
 
-/* line 44, ../sass/modules/_puzzle.scss */
+/* line 45, ../sass/modules/_puzzle.scss */
 .puzzle--game--node {
   width: 5.46875rem;
   height: 5.46875rem;
   float: left;
   margin: 0 0 0.625rem 0.625rem;
-  background: rgba(119, 119, 119, 0.2);
+  background: #DFDFDF;
   border-radius: 0.25rem;
 }
-/* line 52, ../sass/modules/_puzzle.scss */
+/* line 53, ../sass/modules/_puzzle.scss */
 .puzzle--game--node:nth-child(4n) {
   margin-right: 0;
 }
 
-/* line 57, ../sass/modules/_puzzle.scss */
+/* line 58, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles {
   position: absolute;
   width: 23.75rem;
   height: 23.75rem;
 }
 
-/* line 63, ../sass/modules/_puzzle.scss */
+/* line 64, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item {
   width: 5.46875rem;
   height: 5.46875rem;
   text-align: center;
   font-size: 2rem;
   line-height: 5.46875rem;
-  background: rgba(119, 119, 119, 0.2);
+  background: #DFDFDF;
   border-radius: 0.25rem;
   position: absolute;
   left: 0.625rem;
@@ -1886,51 +1887,55 @@ small {
   transition-duration: 250ms;
   transition-timing-function: ease-in-out;
 }
-/* line 81, ../sass/modules/_puzzle.scss */
+/* line 83, ../sass/modules/_puzzle.scss */
+.puzzle--game--tiles--item.is-2 {
+  background: #ddcaca;
+}
+/* line 87, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.is-4 {
-  background: rgba(119, 119, 119, 0.3);
+  background: #b1bcf4;
 }
-/* line 85, ../sass/modules/_puzzle.scss */
+/* line 91, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.is-8 {
-  background: rgba(119, 119, 119, 0.4);
+  background: #ECED87;
 }
-/* line 89, ../sass/modules/_puzzle.scss */
+/* line 95, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.is-16 {
-  background: rgba(119, 119, 119, 0.5);
+  background: #FDAEAA;
 }
-/* line 93, ../sass/modules/_puzzle.scss */
+/* line 99, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.is-32 {
-  background: rgba(119, 119, 119, 0.6);
+  background: #98DEE0;
 }
-/* line 97, ../sass/modules/_puzzle.scss */
+/* line 103, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.is-64 {
-  background: rgba(119, 119, 119, 0.7);
+  background: #90AFF8;
 }
-/* line 101, ../sass/modules/_puzzle.scss */
+/* line 107, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.is-128 {
-  background: rgba(119, 119, 119, 0.8);
+  background: #FFAB22;
 }
-/* line 105, ../sass/modules/_puzzle.scss */
+/* line 111, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.is-256 {
-  background: rgba(119, 119, 119, 0.9);
+  background: #089B8B;
   color: #ffffff;
 }
-/* line 110, ../sass/modules/_puzzle.scss */
+/* line 116, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.is-512 {
-  background: #777777;
+  background: #EF0C0C;
   color: #ffffff;
 }
-/* line 115, ../sass/modules/_puzzle.scss */
+/* line 121, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.is-1024 {
-  background: rgba(216, 30, 4, 0.5);
+  background: #282312;
   color: #ffffff;
 }
-/* line 120, ../sass/modules/_puzzle.scss */
+/* line 126, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.is-2048 {
-  background: #d81e04;
+  background: #EF0C0C;
   color: #ffffff;
 }
-/* line 127, ../sass/modules/_puzzle.scss */
+/* line 133, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.a1 {
   -webkit-transform: translate(0, 0);
       -ms-transform: translate(0, 0);
@@ -1938,14 +1943,14 @@ small {
   margin-left: 0;
   margin-top: 0;
 }
-/* line 133, ../sass/modules/_puzzle.scss */
+/* line 139, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.b1 {
   margin-top: 0;
   -webkit-transform: translate(100%, 0);
       -ms-transform: translate(100%, 0);
           transform: translate(100%, 0);
 }
-/* line 138, ../sass/modules/_puzzle.scss */
+/* line 144, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.c1 {
   margin-top: 0;
   margin-left: 1.25rem;
@@ -1953,7 +1958,7 @@ small {
       -ms-transform: translate(200%, 0);
           transform: translate(200%, 0);
 }
-/* line 144, ../sass/modules/_puzzle.scss */
+/* line 150, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.d1 {
   margin-top: 0;
   margin-left: 1.875rem;
@@ -1961,34 +1966,34 @@ small {
       -ms-transform: translate(300%, 0);
           transform: translate(300%, 0);
 }
-/* line 151, ../sass/modules/_puzzle.scss */
+/* line 157, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.a2 {
   -webkit-transform: translate(0, 100%);
       -ms-transform: translate(0, 100%);
           transform: translate(0, 100%);
   margin-left: 0;
 }
-/* line 156, ../sass/modules/_puzzle.scss */
+/* line 162, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.b2 {
   -webkit-transform: translate(100%, 100%);
       -ms-transform: translate(100%, 100%);
           transform: translate(100%, 100%);
 }
-/* line 160, ../sass/modules/_puzzle.scss */
+/* line 166, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.c2 {
   margin-left: 1.25rem;
   -webkit-transform: translate(200%, 100%);
       -ms-transform: translate(200%, 100%);
           transform: translate(200%, 100%);
 }
-/* line 165, ../sass/modules/_puzzle.scss */
+/* line 171, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.d2 {
   margin-left: 1.875rem;
   -webkit-transform: translate(300%, 100%);
       -ms-transform: translate(300%, 100%);
           transform: translate(300%, 100%);
 }
-/* line 171, ../sass/modules/_puzzle.scss */
+/* line 177, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.a3 {
   margin-top: 1.25rem;
   -webkit-transform: translate(0, 200%);
@@ -1996,14 +2001,14 @@ small {
           transform: translate(0, 200%);
   margin-left: 0;
 }
-/* line 177, ../sass/modules/_puzzle.scss */
+/* line 183, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.b3 {
   margin-top: 1.25rem;
   -webkit-transform: translate(100%, 200%);
       -ms-transform: translate(100%, 200%);
           transform: translate(100%, 200%);
 }
-/* line 182, ../sass/modules/_puzzle.scss */
+/* line 188, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.c3 {
   margin-top: 1.25rem;
   margin-left: 1.25rem;
@@ -2011,7 +2016,7 @@ small {
       -ms-transform: translate(200%, 200%);
           transform: translate(200%, 200%);
 }
-/* line 188, ../sass/modules/_puzzle.scss */
+/* line 194, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.d3 {
   margin-top: 1.25rem;
   margin-left: 1.875rem;
@@ -2019,7 +2024,7 @@ small {
       -ms-transform: translate(300%, 200%);
           transform: translate(300%, 200%);
 }
-/* line 195, ../sass/modules/_puzzle.scss */
+/* line 201, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.a4 {
   margin-top: 1.875rem;
   -webkit-transform: translate(0, 300%);
@@ -2027,14 +2032,14 @@ small {
           transform: translate(0, 300%);
   margin-left: 0;
 }
-/* line 201, ../sass/modules/_puzzle.scss */
+/* line 207, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.b4 {
   margin-top: 1.875rem;
   -webkit-transform: translate(100%, 300%);
       -ms-transform: translate(100%, 300%);
           transform: translate(100%, 300%);
 }
-/* line 206, ../sass/modules/_puzzle.scss */
+/* line 212, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.c4 {
   margin-top: 1.875rem;
   margin-left: 1.25rem;
@@ -2042,7 +2047,7 @@ small {
       -ms-transform: translate(200%, 300%);
           transform: translate(200%, 300%);
 }
-/* line 212, ../sass/modules/_puzzle.scss */
+/* line 218, ../sass/modules/_puzzle.scss */
 .puzzle--game--tiles--item.d4 {
   margin-top: 1.875rem;
   margin-left: 1.875rem;
@@ -2051,10 +2056,24 @@ small {
           transform: translate(300%, 300%);
 }
 
-/* line 219, ../sass/modules/_puzzle.scss */
+/* line 225, ../sass/modules/_puzzle.scss */
 .puzzle--game--instruction {
   padding-top: 2.5rem;
   text-align: center;
+  color: #777;
+}
+
+/* line 232, ../sass/modules/_puzzle.scss */
+.puzzle--game--note {
+  position: absolute;
+  left: 0;
+  top: -3.125rem;
+  width: 100%;
+  text-align: center;
+  color: #d81e04;
+}
+/* line 240, ../sass/modules/_puzzle.scss */
+.puzzle--game--note small {
   color: #777;
 }
 

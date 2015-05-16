@@ -2,18 +2,19 @@
 
 $puzzle-color: #777;
 
-$puzzle-bg: rgba($puzzle-color, 0.1);
-$puzzle-item-bg: rgba($puzzle-color, 0.2);
-$puzzle-is-4-bg: rgba($puzzle-color, 0.3);
-$puzzle-is-8-bg: rgba($puzzle-color, 0.4);
-$puzzle-is-16-bg: rgba($puzzle-color, 0.5);
-$puzzle-is-32-bg: rgba($puzzle-color, 0.6);
-$puzzle-is-64-bg: rgba($puzzle-color, 0.7);
-$puzzle-is-128-bg: rgba($puzzle-color, 0.8);
-$puzzle-is-256-bg: rgba($puzzle-color, 0.9);
-$puzzle-is-512-bg: rgba($puzzle-color, 1);
-$puzzle-is-1024-bg: rgba($color-primary, 0.5);
-$puzzle-is-2048-bg: rgba($color-primary, 1);
+$puzzle-bg: #F4F4F4;
+$puzzle-item-bg: #DFDFDF;
+$puzzle-is-2-bg: #ddcaca;
+$puzzle-is-4-bg: #b1bcf4;
+$puzzle-is-8-bg: #ECED87;
+$puzzle-is-16-bg: #FDAEAA;
+$puzzle-is-32-bg: #98DEE0;
+$puzzle-is-64-bg: #90AFF8;
+$puzzle-is-128-bg: #FFAB22;
+$puzzle-is-256-bg: #089B8B;
+$puzzle-is-512-bg: #EF0C0C;
+$puzzle-is-1024-bg: #282312;
+$puzzle-is-2048-bg: #EF0C0C;
 
 $puzzle-radius: rem-calc(4);
 $puzzle-padding: rem-calc(10);
@@ -77,6 +78,11 @@ $puzzle-tile-size: rem-calc(((400 - 10) / 4) - $puzzle-tile-margin);
     transition-property: transform, margin;
     transition-duration: $transition-duration;
     transition-timing-function: $transition-method;
+
+
+    &.is-2 {
+        background: $puzzle-is-2-bg;
+    }
 
     &.is-4 {
         background: $puzzle-is-4-bg;
@@ -220,4 +226,18 @@ $puzzle-tile-size: rem-calc(((400 - 10) / 4) - $puzzle-tile-margin);
     padding-top: rem-calc(40);
     text-align: center;
     color: #777;
+}
+
+
+.puzzle--game--note {
+    position: absolute;
+    left: 0;
+    top: rem-calc(-50);
+    width: 100%;
+    text-align: center;
+    color: $color-primary;
+
+    small {
+        color: #777;
+    }
 }
