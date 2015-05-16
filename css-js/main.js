@@ -38,29 +38,23 @@ Game.prototype.generateGrid = function(){
 
 Game.prototype.start = function(){
     this.generateGrid();
-    this.generateNblock(3);
+    this.generateNblock();
     this.watchKeyboard();
 };
 
 Game.prototype.generateNblock = function(n){
     var self = this;
-    n = typeof n !== undefined ? n : 2;
+    n = typeof n !== 'undefined' ? n : 2;
     var nBlocks = _.sample(this.gridZoneKeys, n);
-    nBlocks = ['a4', 'b4', 'c4'];
 
     var html = '';
     for(var i = 0; i < n; i++) {
         var value = 2;
-        if( i === 0) {
-            value = 4;
-        }
-        else {
-            value = 2;
-        }
 
         html += '<div class="puzzle--game--tiles--item '+nBlocks[i]+'">'+ value +'</div>';
         self.gridZone[nBlocks[i]].digit = value;
     }
+
     $('.puzzle--game--tiles').append(html);
 };
 
@@ -74,19 +68,19 @@ Game.prototype.watchKeyboard = function(){
 
         switch(e.which) {
         case 39:
-            self.rightKeyHandler();
+            self.keyHandler('right');
             break;
 
         case 37:
-            console.log('left');
+            self.keyHandler('left');
             break;
 
         case 38:
-            console.log('top');
+            self.keyHandler('top');
             break;
 
         case 40:
-            console.log('bottom');
+            self.keyHandler('bottom');
             break;
         }
     });
@@ -126,12 +120,28 @@ Game.prototype.getGridKeysByRow = function(){
     return splittedArray;
 };
 
-Game.prototype.rightKeyHandler = function(){
+Game.prototype.keyHandler = function(direction){
     var self = this;
-    var grid = this.getGridKeysByRow();
     var gridBlocks = this.keysHasValue();
 
-    gridBlocks.reverse();
+    var grid;
+    if(direction === 'top' || direction === 'bottom') {
+        grid = this.getGridKeysByColumn();
+    }
+    else if(direction === 'left' || direction === 'right') {
+        grid = this.getGridKeysByRow();
+    }
+
+
+    if(direction === 'left' || direction === 'top') {
+        _.each(grid, function(value, key){
+            grid[key].reverse();
+        });
+    }
+    else if(direction === 'right' || direction === 'bottom') {
+        gridBlocks.reverse();
+    }
+
     _.each(gridBlocks, function(block){
         // console.log('Old-block - ' + block);
 
@@ -208,6 +218,7 @@ Game.prototype.change = function(obj){
     self.gridZone[obj.old.tile].digit = obj.old.val;
     self.gridZone[obj.new.tile].digit = obj.new.val;
 };
+
 
 jQuery(document).ready(function() {
     var game = new Game();
