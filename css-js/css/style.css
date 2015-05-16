@@ -2,7 +2,7 @@
 ========================================================== */
 /* Basic settings
 ========================================================== */
-@import url(http://fonts.googleapis.com/css?family=Montserrat);
+@import url("http://fonts.googleapis.com/css?family=Montserrat");
 /* line 364, ../vendors/foundation/scss/foundation/components/_global.scss */
 meta.foundation-version {
   font-family: "/5.5.2/";
@@ -1820,6 +1820,7 @@ small {
 .footer {
   padding: 2.5rem 0 1.25rem;
   color: #a2a2a2;
+  text-align: center;
 }
 
 /* line 30, ../sass/modules/_puzzle.scss */
@@ -1884,7 +1885,7 @@ small {
   margin-top: 0.625rem;
   transition-property: -webkit-transform, margin;
   transition-property: transform, margin;
-  transition-duration: 250ms;
+  transition-duration: 200ms;
   transition-timing-function: ease-in-out;
 }
 /* line 83, ../sass/modules/_puzzle.scss */
