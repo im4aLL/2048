@@ -4,22 +4,22 @@ var Game = function(){
     this.grid = [4, 4];
 
     this.gridZone = {
-        a1: { digit: 0 },
-        a2: { digit: 0 },
-        a3: { digit: 0 },
-        a4: { digit: 0 },
-        b1: { digit: 0 },
-        b2: { digit: 0 },
-        b3: { digit: 0 },
-        b4: { digit: 0 },
-        c1: { digit: 0 },
-        c2: { digit: 0 },
-        c3: { digit: 0 },
-        c4: { digit: 0 },
-        d1: { digit: 0 },
-        d2: { digit: 0 },
-        d3: { digit: 0 },
-        d4: { digit: 0 }
+        a1: { digit: 0, isAbleMarge: true },
+        a2: { digit: 0, isAbleMarge: true },
+        a3: { digit: 0, isAbleMarge: true },
+        a4: { digit: 0, isAbleMarge: true },
+        b1: { digit: 0, isAbleMarge: true },
+        b2: { digit: 0, isAbleMarge: true },
+        b3: { digit: 0, isAbleMarge: true },
+        b4: { digit: 0, isAbleMarge: true },
+        c1: { digit: 0, isAbleMarge: true },
+        c2: { digit: 0, isAbleMarge: true },
+        c3: { digit: 0, isAbleMarge: true },
+        c4: { digit: 0, isAbleMarge: true },
+        d1: { digit: 0, isAbleMarge: true },
+        d2: { digit: 0, isAbleMarge: true },
+        d3: { digit: 0, isAbleMarge: true },
+        d4: { digit: 0, isAbleMarge: true }
     };
 
     this.gridZoneKeys = _.keys(this.gridZone);
@@ -38,17 +38,30 @@ Game.prototype.generateGrid = function(){
 
 Game.prototype.start = function(){
     this.generateGrid();
-    this.generateFirstTwoBlock();
+    this.generateNblock(3);
     this.watchKeyboard();
 };
 
-Game.prototype.generateFirstTwoBlock = function(){
-    var firstTwoBlocks = _.sample(this.gridZoneKeys, 2);
-    var html = '<div class="puzzle--game--tiles--item '+firstTwoBlocks[0]+'">2</div><div class="puzzle--game--tiles--item '+firstTwoBlocks[1]+'">2</div>';
-    $('.puzzle--game--tiles').html(html);
+Game.prototype.generateNblock = function(n){
+    var self = this;
+    n = typeof n !== undefined ? n : 2;
+    var nBlocks = _.sample(this.gridZoneKeys, n);
+    nBlocks = ['a4', 'b4', 'c4'];
 
-    this.gridZone[firstTwoBlocks[0]].digit = 2;
-    this.gridZone[firstTwoBlocks[1]].digit = 2;
+    var html = '';
+    for(var i = 0; i < n; i++) {
+        var value = 2;
+        if( i === 0) {
+            value = 4;
+        }
+        else {
+            value = 2;
+        }
+
+        html += '<div class="puzzle--game--tiles--item '+nBlocks[i]+'">'+ value +'</div>';
+        self.gridZone[nBlocks[i]].digit = value;
+    }
+    $('.puzzle--game--tiles').append(html);
 };
 
 Game.prototype.watchKeyboard = function(){
@@ -114,14 +127,86 @@ Game.prototype.getGridKeysByRow = function(){
 };
 
 Game.prototype.rightKeyHandler = function(){
+    var self = this;
     var grid = this.getGridKeysByRow();
     var gridBlocks = this.keysHasValue();
 
-    console.log( grid );
-
+    gridBlocks.reverse();
     _.each(gridBlocks, function(block){
-        console.log(block);
+        // console.log('Old-block - ' + block);
+
+        var newBlock = block;
+        var newBlockVal = self.gridZone[block].digit;
+        var isMarge = false;
+
+        _.each(grid, function(rowArray){
+            isMarge = false;
+
+            var indexOfBlock = _.indexOf(rowArray, block);
+            if(indexOfBlock !== -1) {
+                // console.log(rowArray);
+
+                for(var i = indexOfBlock; i < 4; i++) {
+                    if(i > indexOfBlock) {
+
+                        if(self.gridZone[rowArray[i]].digit === 0) {
+                            newBlock = rowArray[i];
+                        }
+                        else if( self.gridZone[rowArray[i]].digit === self.gridZone[block].digit && self.gridZone[rowArray[i]].isAbleMarge === true ) {
+                            newBlock = rowArray[i];
+                            newBlockVal += newBlockVal;
+                            isMarge = true;
+                        }
+                    }
+                }
+
+            }
+
+            if(isMarge === true) {
+                self.gridZone[block].digit = 0;
+                self.gridZone[newBlock].isAbleMarge = false;
+            }
+
+        });
+
+        // console.log('new-block - ' + newBlock);
+
+        self.change({
+            old: { tile: block, val: 0 },
+            new: { tile: newBlock, val: newBlockVal }
+        });
+
     });
+
+    self.resetMergeValue();
+};
+
+Game.prototype.resetMergeValue = function(){
+    var self = this;
+
+    _.each(self.gridZone, function(val, key){
+        self.gridZone[key].isAbleMarge = true;
+    });
+};
+
+Game.prototype.change = function(obj){
+    var self = this;
+
+    if(obj.old.tile === obj.new.tile) {
+        return;
+    }
+
+    // if marge happened
+    if($('.puzzle--game--tiles--item.'+obj.new.tile).length > 0) {
+        $('.puzzle--game--tiles--item.'+obj.new.tile).remove();
+    }
+
+    // updating class & value
+    $('.puzzle--game--tiles--item.'+obj.old.tile).removeClass(obj.old.tile).addClass(obj.new.tile).html(obj.new.val);
+
+    // change value
+    self.gridZone[obj.old.tile].digit = obj.old.val;
+    self.gridZone[obj.new.tile].digit = obj.new.val;
 };
 
 jQuery(document).ready(function() {
