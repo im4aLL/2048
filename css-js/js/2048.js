@@ -27,7 +27,7 @@ var Game = function(){
     this.score = 0;
 
     this.winValue = 2048;
-    this.changing = false;
+    this.timeout = '';
 };
 
 Game.prototype.generateGrid = function(){
@@ -91,8 +91,20 @@ Game.prototype.generateNblock = function(n){
 
 Game.prototype.watchKeyboard = function(){
     var self = this;
+    var blockMode = false;
 
     $('html').keydown(function(e){
+        if(blockMode === false) {
+            blockMode = true;
+
+            setTimeout(function(){
+                blockMode = false;
+            }, 250);
+        }
+        else {
+            return false;
+        }
+
         if(e.which >= 38 && e.which <=40 ){
             e.preventDefault();
         }
@@ -114,6 +126,7 @@ Game.prototype.watchKeyboard = function(){
             self.keyHandler('bottom');
             break;
         }
+
     });
 };
 
@@ -169,11 +182,6 @@ Game.prototype.getGridKeysByRow = function(){
 Game.prototype.keyHandler = function(direction){
     var self = this;
 
-    if(self.changing === true) {
-        return;
-    }
-
-    self.changing = true;
     var gridBlocks = this.keysHasValue();
     var generateNewBlock = false;
 
@@ -258,7 +266,6 @@ Game.prototype.keyHandler = function(direction){
 
     self.checkGameOver();
     self.checkWin();
-    self.changing = false;
 };
 
 Game.prototype.resetMergeValue = function(){
