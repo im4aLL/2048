@@ -27,7 +27,6 @@ var Game = function(){
     this.score = 0;
 
     this.winValue = 2048;
-    this.timeout = '';
 };
 
 Game.prototype.generateGrid = function(){
