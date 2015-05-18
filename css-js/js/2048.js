@@ -27,6 +27,7 @@ var Game = function(){
     this.score = 0;
 
     this.winValue = 2048;
+    this.newVal = 2;
 };
 
 Game.prototype.generateGrid = function(){
@@ -301,11 +302,14 @@ Game.prototype.generateNewTile = function(){
     var self = this;
     var newTile = _.sample(self.keysHasNotValue());
 
-    var value = 2;
+    if(self.score > 5000) {
+        self.newVal = _.sample([2, 4, 2]);
+    }
+
     setTimeout(function(){
-        $('.puzzle--game--tiles').append('<div class="puzzle--game--tiles--item '+newTile+' is-'+value+'">'+ value +'</div>');
+        $('.puzzle--game--tiles').append('<div class="puzzle--game--tiles--item '+newTile+' is-'+self.newVal+'">'+ self.newVal +'</div>');
     }, 250);
-    self.gridZone[newTile].digit = value;
+    self.gridZone[newTile].digit = self.newVal;
     self.moved = false;
     self.resetKeyValues();
 };
