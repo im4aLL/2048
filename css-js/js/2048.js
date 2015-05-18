@@ -303,7 +303,7 @@ Game.prototype.generateNewTile = function(){
     var newTile = _.sample(self.keysHasNotValue());
 
     if(self.score > 5000) {
-        self.newVal = _.sample([2, 4, 2]);
+        self.newVal = _.sample([2, 4, 2, 2]);
     }
 
     setTimeout(function(){
